@@ -54,14 +54,14 @@ int main() {
 
     Aht10 sensor(i2c0, PINO_SDA_I2C, PINO_SCL_I2C);
 
-    if (!sensor.inicializarSensor()) {
+    if (!sensor.inicializar()) {
         while (true) {
             tight_loop_contents();
         }
     }
 
     while (true) {
-        if (sensor.atualizarMedicoes()) {
+        if (sensor.disponivel()) {
             const float temperatura_c = sensor.obterTemperaturaCelsius();
             const float umidade_relativa = sensor.obterUmidadeRelativa();
             printf("Temperatura: %.2f C, Umidade: %.2f %%\r\n",
