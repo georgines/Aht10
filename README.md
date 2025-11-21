@@ -77,11 +77,10 @@ int main() {
 ### Pontos de atenção no exemplo
 
 - `stdio_init_all` é opcional e só é necessário caso queira logs via USB/UART.
-- Após `atualizarMedicoes`, utilize `obterTemperaturaCelsius` e `obterUmidadeRelativa` apenas quando `leituraDisponivel` retornar `true`.
-- Ajuste a frequência I2C passando um valor customizado para `inicializarSensor` quando necessário.
+- Após sensor `inicializar` você pode verificar se `disponivel` retorna `true` para utilizar`obterTemperaturaCelsius` e `obterUmidadeRelativa`.
 
 ## Boas práticas
 
 - Garanta resistores de pull-up adequados no barramento I2C para comunicação estável.
-- Evite chamar `atualizarMedicoes` em intervalos inferiores a 100 ms para respeitar o tempo de conversão do sensor.
+- Evite chamar `disponivel` em intervalos inferiores a 100 ms para respeitar o tempo de conversão do sensor.
 - Trate condições de erro retornadas pelos métodos booleanos para recuperar o sensor em caso de falhas momentâneas.
